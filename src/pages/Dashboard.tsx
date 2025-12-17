@@ -68,7 +68,7 @@ const Dashboard = () => {
 }
 
  // Gradio returns output inside data[]
-  }
+
 
   const handleAnalyze = async () => {
   if (!inputText.trim()) {
