@@ -47,24 +47,23 @@ const Dashboard = () => {
 
   async function analyzeCTI(text: string) {
     const res = await fetch(
-      "https://sudhiksha2302-techrag-backend.hf.space/api/predict",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          data: [text],
-        }),
-      }
-    );
+  "https://sudhiksha2302-techrag-backend.hf.space/run/predict",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      data: [inputText],   // Gradio expects data as an array
+    }),
+  }
+);
 
-    if (!res.ok) {
-      throw new Error("Backend request failed");
-    }
+const json = await res.json();
 
-    const json = await res.json();
-    return json.data[0]; // Gradio returns output inside data[]
+// Gradio returns output inside data[0]
+return json.data[0];
+ // Gradio returns output inside data[]
   }
 
   const handleAnalyze = async () => {
