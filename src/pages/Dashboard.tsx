@@ -44,7 +44,7 @@ const Dashboard = () => {
       }
     }
   }, [navigate, guest]);
-
+/*
   async function analyzeCTI(text: string) {
   const res = await fetch(
     "https://sudhiksha2302-techrag-backend.hf.space/run/predict",
@@ -79,11 +79,22 @@ const Dashboard = () => {
     });
     return;
   }
-
+*/
   try {
     setAnalyzing(true);
 
-    const result = await analyzeCTI(inputText);
+   const result = {
+  status: "ok",
+  techniques: [
+    {
+      id: "T1003.001",
+      name: "LSASS Memory",
+      confidence: 0.92,
+      description: "Credential dumping from LSASS memory"
+    }
+  ]
+};
+
 
     setResult({
       inputText,
